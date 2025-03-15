@@ -5,5 +5,5 @@ export default async function Home({ params }: DefaultPageProps) {
   const { lang } = await params
   const dictionary = await getDictionary(lang)
 
-  return <div>{dictionary.Hello}</div>
+  return <div className="h-[200vh]">{dictionary.Hello}</div>
 }
