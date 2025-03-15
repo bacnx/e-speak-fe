@@ -18,7 +18,7 @@ export default function NavDesktop({ dictionary, className }: NavDesktop) {
   const pathname = usePathname()
 
   return (
-    <div className={cn(className, 'flex items-center justify-between gap-2')}>
+    <div className={cn(className, 'ml-6 flex items-center justify-between gap-2')}>
       {MenuItems.map(({ label, href }) => {
         const isPathMatch = isMatchPathname(pathname, href)
         return (

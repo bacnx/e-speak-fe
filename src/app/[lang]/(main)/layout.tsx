@@ -9,9 +9,9 @@ export default async function DefaultLayout({
   params,
 }: Readonly<{
   children: ReactNode
-  params: Promise<{ lang: LocaleEnum }>
+  params: { lang: LocaleEnum }
 }>) {
-  const { lang } = await params
+  const { lang } = params
   const dictionary = await getDictionary(lang)
 
   return (
