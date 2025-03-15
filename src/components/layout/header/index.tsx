@@ -16,9 +16,9 @@ export default function Header({ dictionary }: HeaderProps) {
       <header className="fixed z-50 w-full border-b backdrop-blur-sm">
         <div className="container mx-auto flex h-14 items-center justify-between px-4">
           <div className="flex items-center justify-between gap-4">
-            <NavMobile dictionary={dictionary} className="lg:hidden" />
+            <NavMobile dictionary={dictionary} className="md:hidden" />
             <Logo />
-            <NavDesktop dictionary={dictionary} className="max-lg:hidden" />
+            <NavDesktop dictionary={dictionary} className="max-md:hidden" />
           </div>
           <div className="flex items-center justify-between gap-4">
             <SearchButton />
