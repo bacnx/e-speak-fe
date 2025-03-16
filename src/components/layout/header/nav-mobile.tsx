@@ -27,7 +27,7 @@ export default function NavMobile({ dictionary, className }: NavMobileProps) {
         <SheetTitle className="px-12 py-6 text-xl">{dictionary.Menu}</SheetTitle>
         {MenuItems.map(({ label, href }) => (
           <SheetClose key={href} asChild>
-            <Link href={href} className="border-t px-12 py-6 text-lg hover:bg-gray-100">
+            <Link href={href} className="border-t px-12 py-6 text-lg hover:bg-gray-500/10">
               {dictionary[label]}
             </Link>
           </SheetClose>

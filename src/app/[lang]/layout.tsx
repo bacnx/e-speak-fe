@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 
+import { DefaultProvider } from '@/components/provider'
 import { LocaleEnum } from '@/types/locales'
 
 import '../globals.css'
@@ -29,8 +30,10 @@ export default async function RootLayout({
 }>) {
   const { lang } = await params
   return (
-    <html lang={lang}>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>{children}</body>
+    <html lang={lang} suppressHydrationWarning>
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <DefaultProvider>{children}</DefaultProvider>
+      </body>
     </html>
   )
 }

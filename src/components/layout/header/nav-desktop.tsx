@@ -26,7 +26,7 @@ export default function NavDesktop({ dictionary, className }: NavDesktop) {
             key={href}
             href={href}
             className={cn(
-              'rounded px-2 py-1 text-gray-500 hover:bg-gray-100 hover:text-black',
+              'rounded px-2 py-1 text-gray-500 hover:bg-gray-500/10',
               isPathMatch && 'text-primary',
             )}
           >
