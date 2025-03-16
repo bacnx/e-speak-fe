@@ -4,6 +4,7 @@ import Logo from './logo'
 import NavDesktop from './nav-desktop'
 import NavMobile from './nav-mobile'
 import SearchButton from './search-button'
+import ThemeToggle from './theme-toggle'
 import User from './user'
 
 interface HeaderProps {
@@ -22,6 +23,7 @@ export default function Header({ dictionary }: HeaderProps) {
           </div>
           <div className="flex items-center justify-between gap-4">
             <SearchButton />
+            <ThemeToggle />
             <User dictionary={dictionary} />
           </div>
         </div>
