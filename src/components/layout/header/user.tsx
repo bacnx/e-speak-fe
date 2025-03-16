@@ -9,7 +9,7 @@ interface UserProps {
 }
 
 export default function User({ dictionary }: UserProps) {
-  const isAuthenticated = true
+  const isAuthenticated = false
 
   return (
     <div>
@@ -17,7 +17,7 @@ export default function User({ dictionary }: UserProps) {
         <div>User Info</div>
       ) : (
         <Link href="/login">
-          <Button variant="default">Login</Button>
+          <Button>Login</Button>
         </Link>
       )}
     </div>
