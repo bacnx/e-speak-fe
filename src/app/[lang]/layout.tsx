@@ -25,9 +25,9 @@ export default async function RootLayout({
   params,
 }: Readonly<{
   children: React.ReactNode
-  params: { lang: LocaleEnum }
+  params: Promise<{ lang: LocaleEnum }>
 }>) {
-  const { lang } = params
+  const { lang } = await params
   return (
     <html lang={lang}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>{children}</body>
