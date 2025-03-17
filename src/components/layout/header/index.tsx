@@ -1,10 +1,11 @@
+import Logo from '@/components/ui/logo'
+import ThemeToggle from '@/components/ui/theme-toggle'
+
 import { LocaleKeys } from '@/types/locales'
 
-import Logo from './logo'
 import NavDesktop from './nav-desktop'
 import NavMobile from './nav-mobile'
 import SearchButton from './search-button'
-import ThemeToggle from './theme-toggle'
 import User from './user'
 
 interface HeaderProps {

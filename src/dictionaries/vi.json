@@ -4,5 +4,12 @@
   "Learning": "Learning",
   "Practice": "Practice",
   "Dashboard": "Dashboard",
-  "Pricing": "Pricing"
+  "Pricing": "Pricing",
+  "Login": "Login",
+  "Register": "Register",
+  "Email": "Email",
+  "Password": "Password",
+  "Confirm password": "Confirm password",
+  "Welcome back!": "Welcome Back!",
+  "Seconds to register!": "Seconds to register!"
 }
