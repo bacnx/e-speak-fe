@@ -9,5 +9,7 @@
   "Register": "Register",
   "Email": "Email",
   "Password": "Password",
-  "Welcome back!": "Welcome Back!"
+  "Confirm password": "Confirm password",
+  "Welcome back!": "Welcome Back!",
+  "Seconds to register!": "Seconds to register!"
 }
