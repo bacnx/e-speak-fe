@@ -11,7 +11,7 @@ interface AuthHeaderProps {
 
 export default function AuthHeader({ dictionary }: AuthHeaderProps) {
   return (
-    <header className="container mx-auto flex items-center justify-between px-4 py-2">
+    <header className="fixed container mx-auto flex items-center justify-between px-4 py-2">
       <Logo />
       <div className="flex items-center justify-between gap-4">
         <ThemeToggle />

@@ -6,5 +6,8 @@
   "Dashboard": "Dashboard",
   "Pricing": "Pricing",
   "Login": "Login",
-  "Register": "Register"
+  "Register": "Register",
+  "Email": "Email",
+  "Password": "Password",
+  "Welcome back!": "Welcome Back!"
 }
