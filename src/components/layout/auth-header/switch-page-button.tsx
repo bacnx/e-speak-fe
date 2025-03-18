@@ -14,9 +14,12 @@ interface SwitchPageButtonProps {
 export default function SwitchPageButton({ dictionary }: SwitchPageButtonProps) {
   const pathname = usePathname()
   const isLoginPage = pathname.includes('/login')
+  const nextUrl = isLoginPage
+    ? pathname.replace('login', 'register')
+    : pathname.replace('register', 'login')
 
   return (
-    <Link href={isLoginPage ? '/register' : '/login'}>
+    <Link href={nextUrl}>
       <Button>{isLoginPage ? dictionary.Register : dictionary.Login}</Button>
     </Link>
   )

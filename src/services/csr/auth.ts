@@ -8,6 +8,11 @@ const AuthService = {
     const res = await axiosInstance.post(END_POINTS.login, req)
     return res.data
   },
+
+  logout: async () => {
+    const res = await axiosInstance.post(END_POINTS.logout)
+    return res.data
+  },
 }
 
 export default AuthService

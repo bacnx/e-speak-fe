@@ -1,8 +1,25 @@
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
+
 import LoginForm from '@/components/form/login'
 import { getDictionary } from '@/dictionaries/get-dictionary'
 import { DefaultPageProps } from '@/types/common'
 
-export default async function Login({ params }: DefaultPageProps) {
+export default async function Login({ params, searchParams }: DefaultPageProps) {
+  const cookieStore = await cookies()
+  const accessToken = cookieStore.get('access_token')?.value
+
+  if (accessToken) {
+    const { href } = await searchParams
+    let nextHref = '/'
+    if (href && typeof href === 'string') {
+      nextHref = href
+    } else if (typeof href === 'object' && href[0]) {
+      ;[nextHref] = href
+    }
+    redirect(nextHref)
+  }
+
   const { lang } = await params
   const dictionary = await getDictionary(lang)
 
