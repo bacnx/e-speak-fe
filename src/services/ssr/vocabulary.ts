@@ -1,4 +1,8 @@
+import devLog from '@/lib/dev-log'
+
 import END_POINTS from '../end-points'
+
+import { SERVER_BASE_URL } from './constants'
 
 export interface IVocabulariesRequest {
   /** limit */
@@ -33,7 +37,7 @@ const getDefaultRequest = (): IVocabulariesRequest => ({
 
 const VocabularyService = {
   get: async (req?: IVocabulariesRequest) => {
-    const url = new URL(`${END_POINTS.baseUrl}${END_POINTS.vocabularies}`)
+    const url = new URL(`${SERVER_BASE_URL}${END_POINTS.vocabularies}`)
 
     const newReq = req || getDefaultRequest()
     Object.entries(newReq).forEach(([key, value]) => {

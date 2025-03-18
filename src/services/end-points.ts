@@ -6,6 +6,13 @@ const END_POINTS = {
   // auth
   login: '/auth/login',
   refreshToken: 'auth/refresh_token',
+
+  // user
+  users: '/users',
+}
+
+if (process.env.NODE_ENV === 'development') {
+  END_POINTS.baseUrl = '/api'
 }
 
 export default END_POINTS
