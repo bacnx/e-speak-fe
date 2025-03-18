@@ -5,7 +5,8 @@ import { usePathname } from 'next/navigation'
 
 import { Button } from '@/components/ui/button'
 
-import AuthService from '@/services/csr/auth'
+import { useLogout } from '@/lib/auth'
+import { useAuthStore } from '@/store/use-auth-store'
 import { LocaleKeys } from '@/types/locales'
 
 interface UserProps {
@@ -13,8 +14,10 @@ interface UserProps {
 }
 
 export default function User({ dictionary }: UserProps) {
-  const isAuthenticated = false
+  const { user } = useAuthStore()
+  const isAuthenticated = user !== null
   const currentUrl = usePathname()
+  const { onLogout } = useLogout()
 
   let loginUrl = '/login'
   if (!currentUrl.includes('/login')) {
@@ -24,7 +27,7 @@ export default function User({ dictionary }: UserProps) {
   return (
     <div>
       {isAuthenticated ? (
-        <Button onClick={() => AuthService.logout()}>{dictionary.Logout}</Button>
+        <Button onClick={onLogout}>{dictionary.Logout}</Button>
       ) : (
         <Link href={loginUrl}>
           <Button>{dictionary.Login}</Button>

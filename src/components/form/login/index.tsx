@@ -15,10 +15,10 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 
+import { useLogin } from '@/lib/auth'
 import { LocaleKeys } from '@/types/locales'
 
 import { formSchema } from './schema'
-import { handleSubmit } from './utils'
 
 interface LoginFormProps {
   dictionary: LocaleKeys
@@ -32,10 +32,11 @@ export default function LoginForm({ dictionary }: LoginFormProps) {
       password: '',
     },
   })
+  const { onSubmit } = useLogin()
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <FormField
           name="email"
           control={form.control}

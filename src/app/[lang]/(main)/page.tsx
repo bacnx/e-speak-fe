@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import { getDictionary } from '@/dictionaries/get-dictionary'
-import VocabularyService from '@/services/ssr/vocabulary'
+import VocabularyService from '@/services/server-side/vocabulary'
 import { DefaultPageProps } from '@/types/common'
 
 export default async function Home({ params }: DefaultPageProps) {

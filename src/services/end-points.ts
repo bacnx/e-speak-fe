@@ -7,6 +7,7 @@ const END_POINTS = {
   login: '/auth/login',
   refreshToken: 'auth/refresh_token',
   logout: '/auth/logout',
+  register: '/auth/register',
 
   // user
   users: '/users',
