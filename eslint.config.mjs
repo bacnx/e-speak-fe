@@ -66,6 +66,7 @@ export default [
       "@typescript-eslint/no-use-before-define": "off",
       "import/extensions": 0,
       "import/no-unresolved": 0,
+      "no-underscore-dangle": 0,
 
       "prettier/prettier": [
         "error",

@@ -5,6 +5,7 @@ const END_POINTS = {
 
   // auth
   login: '/auth/login',
+  refreshToken: 'auth/refresh_token',
 }
 
 export default END_POINTS

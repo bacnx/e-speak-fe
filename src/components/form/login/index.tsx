@@ -15,10 +15,10 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 
-import devLog from '@/lib/dev-log'
 import { LocaleKeys } from '@/types/locales'
 
 import { formSchema } from './schema'
+import { handleSubmit } from './utils'
 
 interface LoginFormProps {
   dictionary: LocaleKeys
@@ -33,13 +33,9 @@ export default function LoginForm({ dictionary }: LoginFormProps) {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    devLog(values)
-  }
-
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
         <FormField
           name="email"
           control={form.control}
