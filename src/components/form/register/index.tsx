@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 
-import devLog from '@/lib/dev-log'
+import { useRegister } from '@/lib/auth'
 import { LocaleKeys } from '@/types/locales'
 
 import { formSchema } from './schema'
@@ -33,10 +33,7 @@ export default function RegisterForm({ dictionary }: RegisterFormProps) {
       confirm: '',
     },
   })
-
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    devLog(values)
-  }
+  const { onSubmit } = useRegister()
 
   return (
     <Form {...form}>
