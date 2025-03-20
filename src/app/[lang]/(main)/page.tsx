@@ -8,7 +8,11 @@ export default async function Home({ params }: DefaultPageProps) {
   const { lang } = await params
   const dictionary = await getDictionary(lang)
 
-  const vocabularies = await VocabularyService.getWordList(10)
+  const res = await VocabularyService.getWordList(10)
+  if (res.isError) {
+    return <div>{res.message}</div>
+  }
+  const vocabularies = res.data
 
   return (
     <div className="container mx-auto w-full px-4">

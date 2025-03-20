@@ -1,33 +1,8 @@
-import devLog from '@/lib/dev-log'
-
 import END_POINTS from '../end-points'
+import { failure, failureWithError, ServiceResponse, success } from '../errors'
 
 import { SERVER_BASE_URL } from './constants'
-
-export interface IVocabulariesRequest {
-  /** limit */
-  limit?: number
-  /** page_number */
-  page_number?: number
-  /** Ex: Personal Traits */
-  topic?: string
-  /** Ex: A1 */
-  level?: string
-  /** Ex: persistent */
-  text?: string
-  /** is_strict = true return only one match */
-  is_strict?: boolean
-}
-
-export interface ModelsVocabulary {
-  audio_url: string
-  image: string
-  level: string
-  text: string
-  topic: string
-  transcript_ipa: string
-  translation: string
-}
+import { IVocabulariesRequest, IVocabulariesResponse, ModelsVocabulary } from './types'
 
 const getDefaultRequest = (): IVocabulariesRequest => ({
   limit: 10,
@@ -36,7 +11,7 @@ const getDefaultRequest = (): IVocabulariesRequest => ({
 })
 
 const VocabularyService = {
-  get: async (req?: IVocabulariesRequest) => {
+  get: async (req?: IVocabulariesRequest): Promise<ServiceResponse<IVocabulariesResponse>> => {
     const url = new URL(`${SERVER_BASE_URL}${END_POINTS.vocabularies}`)
 
     const newReq = req || getDefaultRequest()
@@ -44,18 +19,32 @@ const VocabularyService = {
       url.searchParams.append(key, value)
     })
 
-    const res = await fetch(url)
+    try {
+      const res = await fetch(url)
+      const data = await res.json()
 
-    return res.json()
+      if (!res.ok) {
+        return failure(data?.message || 'Failed to get vocabularies')
+      }
+      return success(data)
+    } catch (error) {
+      return failureWithError(error)
+    }
   },
 
-  getWordList: async (limit: number, page_number: number = 1): Promise<ModelsVocabulary[]> => {
+  getWordList: async (
+    limit: number,
+    page_number: number = 1,
+  ): Promise<ServiceResponse<ModelsVocabulary[]>> => {
     const req = getDefaultRequest()
     req.limit = limit
     req.page_number = page_number
 
     const res = await VocabularyService.get(req)
-    return res.data
+    if (res.isError) {
+      return res
+    }
+    return success(res.data.data)
   },
 }
 
