@@ -1,10 +1,10 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 
 import { Button } from '@/components/ui/button'
 
+import { useSwitchAuthPages } from '@/lib/auth'
 import { LocaleKeys } from '@/types/locales'
 
 interface SwitchPageButtonProps {
@@ -12,11 +12,10 @@ interface SwitchPageButtonProps {
 }
 
 export default function SwitchPageButton({ dictionary }: SwitchPageButtonProps) {
-  const pathname = usePathname()
-  const isLoginPage = pathname.includes('/login')
+  const { nextUrl, isLoginPage } = useSwitchAuthPages()
 
   return (
-    <Link href={isLoginPage ? '/register' : '/login'}>
+    <Link href={nextUrl}>
       <Button>{isLoginPage ? dictionary.Register : dictionary.Login}</Button>
     </Link>
   )

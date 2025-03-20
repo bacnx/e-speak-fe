@@ -1,9 +1,5 @@
 'use client'
 
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
-
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -15,28 +11,15 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 
-import devLog from '@/lib/dev-log'
+import { useRegister } from '@/lib/auth'
 import { LocaleKeys } from '@/types/locales'
-
-import { formSchema } from './schema'
 
 interface RegisterFormProps {
   dictionary: LocaleKeys
 }
 
 export default function RegisterForm({ dictionary }: RegisterFormProps) {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      email: '',
-      password: '',
-      confirm: '',
-    },
-  })
-
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    devLog(values)
-  }
+  const { form, onSubmit } = useRegister()
 
   return (
     <Form {...form}>
