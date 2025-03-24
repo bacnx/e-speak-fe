@@ -1,10 +1,12 @@
+import { v4 as uuidv4 } from 'uuid'
+
 import { getCodePoints } from '@/lib/utils'
 
 import END_POINTS from '../end-points'
 import { failureWithError, ServiceResponse, success } from '../errors'
 
 import axiosInstance from './axios'
-import { ModelCheckPhonemes } from './types'
+import { ModelCheckPhonemes, ModelPhonemeCharacter } from './types'
 
 const PhonemesService = {
   check: async (
@@ -17,7 +19,11 @@ const PhonemesService = {
       formData.append('ground_truth', getCodePoints(groundTruth))
 
       const res = await axiosInstance.post(END_POINTS.checkPhonemes, formData)
-      return success(res.data)
+      const characters = res.data.characters.map((char: ModelPhonemeCharacter) => ({
+        ...char,
+        id: uuidv4(),
+      }))
+      return success({ ...res.data, characters })
     } catch (error) {
       return failureWithError(error)
     }

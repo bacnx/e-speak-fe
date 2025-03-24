@@ -25,6 +25,7 @@ export interface UserModel {
 }
 
 export interface ModelPhonemeCharacter {
+  id: string
   char: string
   confidence: number
   end_offset: number
