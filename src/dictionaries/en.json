@@ -16,6 +16,8 @@
   "Listen": "Listen",
   "Stop": "Stop",
   "Record": "Record",
+  "Check": "Check",
   "Checking": "Checking",
-  "Point": "Point"
+  "Score": "Score",
+  "Phonetic": "Phonetic"
 }

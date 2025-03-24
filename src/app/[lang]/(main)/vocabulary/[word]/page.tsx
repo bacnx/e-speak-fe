@@ -1,5 +1,3 @@
-import { notFound } from 'next/navigation'
-
 import { VocabularyCard } from '@/components/feature/vocabulary-card'
 import { getDictionary } from '@/dictionaries/get-dictionary'
 import VocabularyService from '@/services/server-side/vocabulary'
