@@ -8,9 +8,11 @@ export const useAudio = (initUrl: string | null) => {
   useEffect(() => {
     if (!url) return () => {}
     audioRef.current = new Audio(url)
-    audioRef.current.addEventListener('ended', () => setIsPlaying(false))
+    const handleEnded = () => setIsPlaying(false)
+    audioRef.current.addEventListener('ended', handleEnded)
     return () => {
-      audioRef.current?.removeEventListener('ended', () => setIsPlaying(false))
+      audioRef.current?.removeEventListener('ended', handleEnded)
+      audioRef.current = null // Clean up the audio element
     }
   }, [url])
 
