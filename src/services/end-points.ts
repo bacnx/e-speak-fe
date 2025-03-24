@@ -11,6 +11,9 @@ const END_POINTS = {
 
   // user
   users: '/users',
+
+  // phonemes
+  checkPhonemes: '/check-phonemes',
 }
 
 if (process.env.NODE_ENV === 'development') {

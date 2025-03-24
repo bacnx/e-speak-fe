@@ -14,14 +14,22 @@ interface ActionsProps {
 }
 
 export default function Actions({ dictionary, wordData }: ActionsProps) {
-  const { isPlaying, toggleAudio, isRecording, toggleRecording } = useVobulary(wordData.audioUrl)
-  const isChecking = false
+  const {
+    isPlaying,
+    toggleAudio,
+    isRecording,
+    toggleRecording,
+    recordedAudio,
+    onCheckPhonemes,
+    isChecking,
+    result,
+  } = useVobulary(wordData.audioUrl, wordData.phonetic)
 
   return (
     <>
       <div className="flex flex-col items-center gap-4">
         <div className="flex justify-center gap-4">
-          <Button variant="ghost" size="lg" className="gap-2" onClick={toggleAudio}>
+          <Button variant="secondary" size="lg" className="gap-2" onClick={toggleAudio}>
             {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
             <span className="font-medium">{isPlaying ? dictionary.Stop : dictionary.Listen}</span>
           </Button>
@@ -36,7 +44,7 @@ export default function Actions({ dictionary, wordData }: ActionsProps) {
           </Button>
         </div>
 
-        <Button>
+        <Button disabled={!recordedAudio} onClick={onCheckPhonemes}>
           {isChecking ? (
             <Loader2 className="h-5 w-5 animate-spin" />
           ) : (
@@ -46,7 +54,7 @@ export default function Actions({ dictionary, wordData }: ActionsProps) {
         </Button>
       </div>
 
-      <Result dictionary={dictionary} />
+      {result && <Result dictionary={dictionary} result={result} />}
     </>
   )
 }
