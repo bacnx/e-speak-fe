@@ -46,6 +46,23 @@ const VocabularyService = {
     }
     return success(res.data.data)
   },
+
+  getWord: async (word: string): Promise<ServiceResponse<ModelsVocabulary>> => {
+    const req = getDefaultRequest()
+    req.text = word
+    req.is_strict = true
+
+    const res = await VocabularyService.get(req)
+    if (res.isError) {
+      return res
+    }
+
+    if (res.data.data.length === 0) {
+      return failure('Vocabulary not found')
+    }
+
+    return success(res.data.data[0])
+  },
 }
 
 export default VocabularyService

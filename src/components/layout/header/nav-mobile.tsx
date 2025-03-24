@@ -18,7 +18,7 @@ export default function NavMobile({ dictionary, className }: NavMobileProps) {
     <Sheet>
       <SheetTrigger asChild>
         <div className={className}>
-          <Button variant="outline" size="sm">
+          <Button variant="outline">
             <MenuIcon />
           </Button>
         </div>

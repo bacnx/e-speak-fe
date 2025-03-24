@@ -12,5 +12,10 @@
   "Password": "Password",
   "Confirm password": "Confirm password",
   "Welcome back!": "Welcome Back!",
-  "Seconds to register!": "Seconds to register!"
+  "Seconds to register!": "Seconds to register!",
+  "Listen": "Listen",
+  "Stop": "Stop",
+  "Record": "Record",
+  "Checking": "Checking",
+  "Point": "Point"
 }
