@@ -17,7 +17,7 @@ export default async function DefaultLayout({
   return (
     <div>
       <Header dictionary={dictionary} />
-      {children}
+      <div className="h-screen pt-[var(--height-header)]">{children}</div>
     </div>
   )
 }

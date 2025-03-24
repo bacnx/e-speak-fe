@@ -30,7 +30,7 @@ export default function ThemeToggle({ ...props }: ThemeToggleProps) {
   }
 
   return (
-    <Button variant="ghost" size="sm" {...props} onClick={toggleTheme}>
+    <Button variant="ghost" {...props} onClick={toggleTheme}>
       {currentTheme === 'dark' ? <Sun /> : <Moon />}
     </Button>
   )

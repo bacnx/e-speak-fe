@@ -27,7 +27,7 @@ export default function SearchButton() {
   }, [])
 
   return (
-    <Button variant="outline" size="sm" onClick={handleShortcut}>
+    <Button variant="outline" onClick={handleShortcut}>
       <SearchIcon />
       <span className="flex items-center opacity-50">
         {/* why size={14} is not work? */}
