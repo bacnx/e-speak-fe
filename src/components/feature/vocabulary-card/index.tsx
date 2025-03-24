@@ -1,18 +1,14 @@
 'use client'
 
-import { ChevronLeft, ChevronRight, Mic, Play } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 
 import { cn } from '@/lib/utils'
 import { LocaleKeys } from '@/types/locales'
 
-interface WordData {
-  word: string
-  translation: string
-  phonetic: string
-  audioUrl: string
-}
+import Actions from './actions'
+import { WordData } from './types'
 
 interface VocabularyCardProps {
   dictionary: LocaleKeys
@@ -22,9 +18,6 @@ interface VocabularyCardProps {
 }
 
 export function VocabularyCard({ dictionary, wordData, onNext, onPrevious }: VocabularyCardProps) {
-  const isRecording = false
-  const emptyFunc = () => {}
-
   return (
     <div className="bg-card dark:shadow-xl-dark dark:hover:shadow-2xl-dark my-6 w-full max-w-lg rounded-xl p-6 shadow-xl transition-all duration-300 hover:shadow-2xl">
       {/* Header Section: Word, Phonetic, and Translation */}
@@ -61,22 +54,7 @@ export function VocabularyCard({ dictionary, wordData, onNext, onPrevious }: Voc
         </Button>
       </div>
 
-      {/* Action Buttons */}
-      <div className="flex justify-center gap-4">
-        <Button variant="ghost" size="lg" className="gap-2" onClick={emptyFunc}>
-          <Play className="h-5 w-5" />
-          <span className="font-medium">{dictionary.Listen}</span>
-        </Button>
-        <Button
-          variant={isRecording ? 'destructive' : 'outline'}
-          size="lg"
-          className="gap-2"
-          onClick={emptyFunc}
-        >
-          <Mic className="h-5 w-5" />
-          <span className="font-medium">{isRecording ? dictionary.Stop : dictionary.Record}</span>
-        </Button>
-      </div>
+      <Actions dictionary={dictionary} wordData={wordData} />
     </div>
   )
 }
