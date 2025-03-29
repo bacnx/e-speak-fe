@@ -32,7 +32,6 @@ export default async function Lesson({ params }: LessonProps) {
 
   return (
     <div className="container mx-auto w-full px-4 py-2">
-      <h2 className="text-primary text-xl font-semibold">Lesson:</h2>
       <LessonContent dictionary={dictionary} data={vocabularies} />
     </div>
   )

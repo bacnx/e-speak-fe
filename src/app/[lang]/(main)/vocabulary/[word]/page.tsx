@@ -23,7 +23,7 @@ export default async function Vocabulary({ params }: VocabularyProps) {
       <div className="flex h-full items-center justify-center">
         <VocabularyCard
           dictionary={dictionary}
-          wordData={{
+          data={{
             word: data.text,
             translation: data.translation,
             phonetic: data.transcript_ipa,
