@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 
 import { useAudio } from '@/hooks/use-audio'
@@ -11,6 +11,10 @@ export function useVobulary(audioUrl: string, groundTruth: string) {
   const { isRecording, toggleRecording, audioBlob: recordedAudio } = useRecorder()
   const [result, setResult] = useState<ModelCheckPhonemes | null>(null)
   const [isChecking, setChecking] = useState(false)
+
+  useEffect(() => {
+    setResult(null)
+  }, [audioUrl, groundTruth])
 
   const onCheckPhonemes = async () => {
     if (!recordedAudio) return

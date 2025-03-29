@@ -1,20 +1,24 @@
 import { useEffect, useRef, useState } from 'react'
 
 export const useAudio = (initUrl: string | null) => {
-  const [url, setUrl] = useState(initUrl)
-  const [isPlaying, setIsPlaying] = useState(false)
   const audioRef = useRef<HTMLAudioElement | null>(null)
+  const [isPlaying, setIsPlaying] = useState(false)
 
   useEffect(() => {
-    if (!url) return () => {}
-    audioRef.current = new Audio(url)
+    if (!initUrl) return () => {}
+
+    audioRef.current = new Audio(initUrl)
+
+    setIsPlaying(false)
+
     const handleEnded = () => setIsPlaying(false)
     audioRef.current.addEventListener('ended', handleEnded)
+
     return () => {
       audioRef.current?.removeEventListener('ended', handleEnded)
       audioRef.current = null // Clean up the audio element
     }
-  }, [url])
+  }, [initUrl])
 
   const toggleAudio = () => {
     if (audioRef.current) {
@@ -28,8 +32,6 @@ export const useAudio = (initUrl: string | null) => {
   }
 
   return {
-    url,
-    setAudioUrl: setUrl,
     isPlaying,
     toggleAudio,
   }
