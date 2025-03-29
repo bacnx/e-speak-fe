@@ -16,6 +16,7 @@ export default async function Home({ params }: DefaultPageProps) {
 
   return (
     <div className="container mx-auto w-full px-4">
+      <h2 className="text-primary text-xl font-semibold">Words:</h2>
       {vocabularies.map((vocab) => (
         <Link
           className="hover:text-primary block"
