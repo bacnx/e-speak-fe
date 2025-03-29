@@ -22,7 +22,7 @@ export interface IVocabulariesRequest {
 
 export interface ModelsVocabulary {
   audio_url: string
-  image: string
+  image_url: string
   level: string
   text: string
   topic: string
